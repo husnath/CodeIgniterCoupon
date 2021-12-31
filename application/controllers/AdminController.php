@@ -22,14 +22,17 @@ class AdminController extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->model('coupon_model');
+		$this->load->helper('url');
 	}
 
 	public function coupon()
 	{
 		
 		
+		
 		if($data = $this->input->post())
 		{
+		
 
 			if(! $this->coupon_model->get_id_wise_register_details('coupon','coupon_code',strtoupper(trim($data['code']))))
 			{
@@ -46,22 +49,36 @@ class AdminController extends CI_Controller {
 				if($this->coupon_model->insert($insert)){
 					$data['success'] = "Coupon code added successfully. do you want add more???";
 				}
+				else echo "some err";
 			}
 			
 
 			else $data['error'] = "invalid coupon code";
 		}
 		
+			$data['auto_code'] = random_string('alnum');
 			$this->load->view('Admin/coupon',$data);
 		
 	}
 
 	public function auto_generate() {
-		// $data['code'] = random_string('alnum');
+		// $auto_code = random_string('alnum');
+		// $this->session->set_flashdata('id',$id);
 		// $this->load->view('Admin/coupon',$data);
 		echo random_string('alnum');
 	}
 
+	public function ajax_test(){
+
+		
+		$this->load->view('Admin/ajax_test');
+	}
+
+	public function aaa(){
+		$data = random_string('alnum');
+		echo json_encode($data);
+
+	}
 
 	
 

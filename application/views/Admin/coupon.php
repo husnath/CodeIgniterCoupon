@@ -23,7 +23,9 @@
     <div class="form-group">
       
       <label for="code">Coupon Code   :</label>
-      <input type="text" name="code" id="code">
+      <input type="text" name="code" id="code" value="<?php if(isset($auto_code)){echo $auto_code;} ?>">
+      <?php echo anchor('AdminController/coupon','Generate',array('class'=>'btn btn-success')); ?>
+      
       <label style="color:red"><?php if(isset($error)){echo $error;} ?></label>
       
     </div>

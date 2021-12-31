@@ -25,6 +25,7 @@ class Welcome extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->model('coupon_model');
+
 	}
 
 	public function index()
@@ -72,6 +73,8 @@ class Welcome extends CI_Controller {
 		$this->load->view('templates/footer');
 
 	}
+	
+
 
 	
 }
